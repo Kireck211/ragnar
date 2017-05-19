@@ -1,9 +1,8 @@
 ################### Imports ########################
-from aParser.grammar import grammar
-from aParser.matrix import matrix
-from aParser.parser import Parser, InputToken
-from lexicalAnalysis.lexicalAnalyzer import *
-from aParser.semantic_functions import semantic_functions
+from bottomUp.grammar import grammar
+from bottomUp.matrix import matrix
+from bottomUp.semantic_functions import semantic_functions
+from bottomUp.classes import Parser, Token, InputToken
 ####################################################
 
 

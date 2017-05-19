@@ -1,21 +1,12 @@
-import operator
-import socket
 import time
-from dronekit import connect, VehicleMode, LocationGlobalRelative, LocationGlobal, Command
+import socket
+import operator
 from pymavlink import mavutil
+from dronekit import connect, VehicleMode, LocationGlobalRelative, LocationGlobal, Command
+
+from bottomUp.classes import InputToken
 
 symbolsTable = {}
-
-class InputToken(object):
-	def __init__(self, lexeme, value = None):
-		self.lexeme = lexeme
-		self.value = value
-	
-	def __str__(self):
-		return self.lexeme
-
-def getValue(identifier):
-	return symbolsTable[identifier]
 
 op = {
 	'+'	: operator.pos,
@@ -65,7 +56,7 @@ def semantic4(head, poppedList):
 	return poppedList[1]
 
 def semantic9(head, poppedList):
-	identifier = getValue(poppedList[2].value)
+	identifier = symbolsTable[poppedList[2].value]
 	operator = poppedList[1].value
 	value = poppedList[0].value
 	symbolsTable[identifier] = op[operator](identifier, value)
